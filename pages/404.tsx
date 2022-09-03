@@ -7,7 +7,7 @@ const ErrorPage: NextPage = () => {
     <main className="h-screen bg-cyan-700 flex items-center justify-center flex-col">
       <Image priority width="400" height="600" src="/error.svg" alt="error" />
       <h1 className="text-black text-center text-xl pb-4">
-        Oops! This page doesn't exist... Yet!
+        Oops! This page does not exist... Yet!
       </h1>
       <Link href="/">
         <button className="text-white">Back to Home</button>
