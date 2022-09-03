@@ -10,10 +10,8 @@ import { useState } from 'react';
 
 const Home: NextPage = () => {
   const [query, setQuery] = useState('');
-  console.log(query);
   const { data, fetchNextPage, isLoading, isFetching, error } =
     useFetchMovies(query);
-  console.log(data);
   return (
     <main className="relative h-screen overflow-y-scroll">
       <Header setQuery={setQuery} />
@@ -41,12 +39,20 @@ const Home: NextPage = () => {
         {data && data.pages
           ? data.pages.map((page) =>
               page.results.map((movie) => (
-                <div key={movie.id}>{movie.original_title}</div>
+                <div key={movie.id}>
+                  <Card
+                    imgUrl={
+                      movie.poster_path
+                        ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
+                        : '/no_image.jpg'
+                    }
+                    title={movie.original_title}
+                  />
+                </div>
               ))
             )
           : null}
       </Grid>
-      <Card />
       <Spinner />
     </main>
   );

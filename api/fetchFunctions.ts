@@ -8,7 +8,6 @@ export const basicFetch = async <returnType>(
   if (!response.ok) throw new Error('Error');
 
   const data = await response.json();
-  console.log(data);
   return data;
 };
 
