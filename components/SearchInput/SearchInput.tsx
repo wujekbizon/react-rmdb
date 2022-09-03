@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import React, { useRef, useState } from 'react';
 
-export type Props = {
-  setQuery?: React.Dispatch<React.SetStateAction<string>>;
+type Props = {
+  setQuery: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const TIME = 500; // ms
