@@ -25,9 +25,41 @@ const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
     <main>
       <Header />
       <Breadcrumb title={movie.original_title} />
-      <MovieInfo />
+      <MovieInfo
+        thumbUrl={
+          movie.poster_path
+            ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
+            : '/no_image.jpg'
+        }
+        rating={movie.vote_average.toFixed(2)}
+        title={movie.original_title}
+        year={movie.release_date.split('-')[0]}
+        backgroundImgUrl={
+          movie.backdrop_path
+            ? IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path
+            : '/no_image.jpg'
+        }
+        summary={movie.overview}
+        directors={directors}
+        time={movie.runtime}
+        budget={movie.budget}
+        revenue={movie.revenue}
+      />
       <Grid className="p-4 max-w-7xl m-auto" title="Actors">
-        <Card />
+        {cast.map((actor) => {
+          return (
+            <Card
+              key={actor.credit_id}
+              imgUrl={
+                actor.profile_path
+                  ? IMAGE_BASE_URL + POSTER_SIZE + actor.profile_path
+                  : '/no_image.jpg'
+              }
+              title={actor.name}
+              subtitle={actor.character}
+            />
+          );
+        })}
       </Grid>
     </main>
   );
