@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import SearchInput from '../SearchInput/SearchInput';
+import { Props } from '../SearchInput/SearchInput';
 
-const Header = () => {
+const Header = ({ setQuery }: Props) => {
   return (
     <div className="sticky flex top-0 z-40 w-full h-24 bg-zinc-900">
       <div className="flex justify-between m-auto w-full h-full max-w-7x1 px-4">
@@ -25,6 +27,11 @@ const Header = () => {
             </div>
           </div>
         </Link>
+        {setQuery && (
+          <div className="relative flex items-center">
+            <SearchInput setQuery={setQuery} />
+          </div>
+        )}
       </div>
     </div>
   );
